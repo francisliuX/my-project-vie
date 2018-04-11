@@ -14,7 +14,9 @@
 // import Element from 'element-li'
 // import 'element-ui/lib/theme-chalk/index.css'
 // Vue.use(Element)
-
+// 引入要保存的localtion
+import Store from '../../store'
+console.log(Store)
     export default{    
         name:'Demo03',
         data:function(){
@@ -22,22 +24,25 @@
             return{
                 newItem:'',
                 
-                todos:[
+                todos:Store.fetch(),
+                // [
                     // {text:'学习 js',isFinished:true},
                     // {text:'学习 css',isFinished:false},
                     // {text:'学习 html',isFinished:true},
-                ],
+                // ],
                 
             }
         },
-        // watch:{
-        //     todos:{
-        //         handler:function(val,oldval){
-        //           console.log(val,oldval)
-        //         },
-        //         deep:true
-        //     }
-        // },
+        // 监听变化
+        watch:{
+            todos:{
+                handler:function(todos){
+                 Store.save(todos)
+                },
+                deep:true
+            }
+        },
+
         methods:{
             toggleFinish:function(todo){
                todo.isFinished=!todo.isFinished
@@ -50,7 +55,7 @@
                 })
                 // console.log(this.newItem)
             this.newItem=""
-            // Store.save()
+            Store.save()//保存到localtion
             }
         }
     }
