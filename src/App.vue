@@ -2,12 +2,16 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
+
   </div>
+ 
 </template>
 
 <script>
 // import Store from './store'
 // console.log(Store)
+
+
 export default {
   name: 'App'
 }

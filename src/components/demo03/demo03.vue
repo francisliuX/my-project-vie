@@ -39,7 +39,7 @@ console.log(Store)
                 handler:function(todos){
                  Store.save(todos)
                 },
-                deep:true
+                deep:false//是否保存历史记录
             }
         },
 
